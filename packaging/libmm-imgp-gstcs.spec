@@ -2,7 +2,7 @@
 Name:       libmm-imgp-gstcs
 Summary:    Multimedia Framework Utility Library
 Version:    0.4
-Release:    12
+Release:    13
 Group:      System/Libraries
 License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz

@@ -723,6 +723,10 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info)
 	image_format_s* input_format=NULL, *output_format=NULL;
 	gstreamer_s* pGstreamer_s;
 	int ret = MM_ERROR_NONE;
+	static const int max_argc = 50;
+	gint* argc = NULL;
+	gchar** argv = NULL;
+
 	g_type_init();
 	if(pImgp_info == NULL) {
 		debug_error("imgp_info_s is NULL");
@@ -747,7 +751,25 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info)
 		#if 0 /* def GST_EXT_TIME_ANALYSIS */
 			MMTA_INIT();
 		#endif
-		gst_init (NULL, NULL);
+		argc = malloc(sizeof(int));
+		argv = malloc(sizeof(gchar*) * max_argc);
+
+		if (!argc || !argv) {
+			debug_error("argc ||argv is NULL");
+			return MM_ERROR_IMAGE_INVALID_VALUE;
+		}
+		memset(argv, 0, sizeof(gchar*) * max_argc);
+		debug_log("memset argv");
+
+		/* add initial */
+		*argc = 1;
+		argv[0] = g_strdup( "mmutil_gstcs" );
+		/* check disable registry scan */
+		argv[*argc] = g_strdup("--gst-disable-registry-update");
+		(*argc)++;
+		debug_log("--gst-disable-registry-update");
+
+		gst_init(argc, &argv);
 
 		pGstreamer_s = g_new0 (gstreamer_s, 1);
 
@@ -774,6 +796,9 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info)
 		pImgp_info->input_format_label, pImgp_info->src_width, pImgp_info->src_height, pImgp_info->output_format_label, pImgp_info->output_stride, pImgp_info->output_elevation, pImgp_info->angle);
 		ret = MM_ERROR_IMAGE_INVALID_VALUE;
 	}
+
+	GSTCS_FREE(argv);
+	GSTCS_FREE(argc)
 
 	GSTCS_FREE(input_format->format_label);
 	GSTCS_FREE(input_format->colorspace);
