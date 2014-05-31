@@ -1,0 +1,20 @@
+Source: libmm-imgp-gstcs
+Section: libs
+Priority: extra
+Maintainer: YoungHun Kim <yh8004.kim@samsung.com>, JongHyuk Choi <jhchoi.choi@samsung.com>
+Uploaders: Shin Seung Bae <seungbae.shin@samsung.com>, JongHyuk Choi <jhchoi.choi@samsung.com>, Cho Ye Jin <cho.yejin@samsung.com>, YoungHwan Ahn <younghwan_.an@samsung.com>
+Build-Depends: debhelper (>= 5), autotools-dev, libmm-common-dev, libmm-log-dev, libmm-common-internal-dev, libgstreamer-plugins-base0.10-dev
+Standards-Version: 3.7.2
+
+Package: libmm-imgp-gstcs
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmm-common, libmm-log, libgstreamer-plugins-base0.10-0
+Description: Multimedia Framework Image processing Gstreamer Library
+
+Package: libmm-imgp-gstcs-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmm-imgp-gstcs (= ${Source-Version})
+Description: Multimedia Framework Image processing Gstreamer Library for debugging (unstripped)
+

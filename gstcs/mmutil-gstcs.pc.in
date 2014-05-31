@@ -1,0 +1,12 @@
+prefix = @prefix@
+exec_prefix=@exec_prefix@
+libdir = @libdir@
+includedir = @includedir@
+
+Name : mmutil-gstcs
+Description : Multimedia Framework Utility Library
+Requires : @GSTCS_REQPKG@
+Version : @VERSION@
+Libs : -L${libdir} -lmmutil_gstcs
+Cflags : -I${includedir}/mmf
+
