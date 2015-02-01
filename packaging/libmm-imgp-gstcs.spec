@@ -1,7 +1,7 @@
 #sbs-git:slp/pkgs/l/libmm-imgp-gstcs libmm-imgp-gstcs 0.1 62b62e6d483557fc5750d1b4986e9a98323f1194
 Name:       libmm-imgp-gstcs
 Summary:    Multimedia Framework Utility Library
-Version:    0.4
+Version:    0.6
 Release:    14
 Group:      System/Libraries
 License:    Apache

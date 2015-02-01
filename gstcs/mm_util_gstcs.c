@@ -427,6 +427,7 @@ _mm_set_input_image_format_s_struct(imgp_info_s* pImgp_info) /* char* __format_l
 	image_format_s* __format = NULL;
 
 	__format=(image_format_s*)malloc(sizeof(image_format_s));
+	memset(__format, 0, sizeof(image_format_s));
 
 	__format->format_label = (char *)malloc(sizeof(char) * IMAGE_FORMAT_LABEL_BUFFER_SIZE);
 	memset(__format->format_label, 0, IMAGE_FORMAT_LABEL_BUFFER_SIZE);
@@ -462,6 +463,7 @@ _mm_set_output_image_format_s_struct(imgp_info_s* pImgp_info)
 	image_format_s* __format = NULL;
 
 	__format=(image_format_s*)malloc(sizeof(image_format_s));
+	memset(__format, 0, sizeof(image_format_s));
 
 	__format->format_label = (char *)malloc(sizeof(char) * IMAGE_FORMAT_LABEL_BUFFER_SIZE);
 	memset(__format->format_label, 0, IMAGE_FORMAT_LABEL_BUFFER_SIZE);
@@ -729,10 +731,12 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info, unsigned char *src, unsigned char *dst)
 	g_type_init();
 	if(pImgp_info == NULL) {
 		debug_error("imgp_info_s is NULL");
+		return MM_ERROR_IMAGE_INVALID_VALUE;
 	}
 
 	if(dst == NULL) {
 		debug_error("dst is NULL");
+		return MM_ERROR_IMAGE_INVALID_VALUE;
 	}
 
 	debug_log("[input] format label : %s width: %d height: %d\t[output] format label: %s width: %d height: %d rotation vaule: %d",
@@ -748,14 +752,19 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info, unsigned char *src, unsigned char *dst)
 
 	if(__mm_check_resize_format(pImgp_info->input_format_label, pImgp_info->src_width, pImgp_info->src_height, pImgp_info->output_format_label, pImgp_info->dst_width, pImgp_info->dst_height)
 		&& __mm_check_rotate_format(pImgp_info->angle, pImgp_info->input_format_label, pImgp_info->output_format_label) ) {
-		#if 0 /* def GST_EXT_TIME_ANALYSIS */
-			MMTA_INIT();
-		#endif
 		argc = malloc(sizeof(int));
 		argv = malloc(sizeof(gchar*) * max_argc);
 
 		if (!argc || !argv) {
 			debug_error("argc ||argv is NULL");
+			free(input_format);
+			free(output_format);
+			if (argc != NULL) {
+				free(argc);
+			}
+			if (argv != NULL) {
+				free(argv);
+			}
 			return MM_ERROR_IMAGE_INVALID_VALUE;
 		}
 		memset(argv, 0, sizeof(gchar*) * max_argc);
@@ -773,9 +782,6 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info, unsigned char *src, unsigned char *dst)
 
 		pGstreamer_s = g_new0 (gstreamer_s, 1);
 
-		#if 0 /* def GST_EXT_TIME_ANALYSIS */
-			 MMTA_ACUM_ITEM_BEGIN("ffmpegcolorspace", 0);
-		#endif
 		/* _format_label : I420, RGB888 etc*/
 		debug_log("Start _mm_imgp_gstcs_processing ");
 		ret =_mm_imgp_gstcs_processing(pGstreamer_s, src, dst, input_format, output_format, pImgp_info); /* input: buffer pointer for input image , input image format, input image width, input image height, output: buffer porinter for output image */
@@ -785,12 +791,6 @@ _mm_imgp_gstcs(imgp_info_s* pImgp_info, unsigned char *src, unsigned char *dst)
 		}else if (ret != MM_ERROR_NONE) {
 			debug_error("ERROR - _mm_imgp_gstcs_processing");
 		}
-		#if 0 /* def GST_EXT_TIME_ANALYSIS */
-			MMTA_ACUM_ITEM_END("ffmpegcolorspace", 0);
-			MMTA_ACUM_ITEM_SHOW_RESULT();
-			MMTA_ACUM_ITEM_SHOW_RESULT_TO(MMTA_SHOW_FILE);
-			MMTA_RELEASE ();
-		#endif
 	}else {
 		debug_error("Error - Check your input / ouput image input_format_label: %s src_width: %d src_height: %d output_format_label: %s output_stride: %d output_elevation: %d angle: %d ",
 		pImgp_info->input_format_label, pImgp_info->src_width, pImgp_info->src_height, pImgp_info->output_format_label, pImgp_info->output_stride, pImgp_info->output_elevation, pImgp_info->angle);
