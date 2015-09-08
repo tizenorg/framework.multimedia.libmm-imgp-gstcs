@@ -1,3 +1,91 @@
+libmm-imgp-gstcs (0.4-12) unstable; urgency=low
+
+  * Add rgb padding vaule to appsrc's buffer
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-12
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Wed, 03 Apr 2013 23:13:40 +0900
+
+libmm-imgp-gstcs (0.4-11) unstable; urgency=low
+
+  * update yuyv fourcc value
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-11
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Fri, 15 Mar 2013 19:46:05 +0900
+
+libmm-imgp-gstcs (0.4-10) unstable; urgency=low
+
+  * update dlog crash
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-10
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Fri, 15 Mar 2013 15:49:25 +0900
+
+libmm-imgp-gstcs (0.4-8) unstable; urgency=low
+
+  * Update LICENSE&NOTICE&AUTHORS
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-8
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Wed, 16 Jan 2013 16:57:42 +0900
+
+libmm-imgp-gstcs (0.4-6) unstable; urgency=low
+
+  * change mmf_debug with dlog
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-6
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Thu, 27 Dec 2012 10:15:39 +0900
+
+libmm-imgp-gstcs (0.4-4) unstable; urgency=low
+
+  * [Prevent] strncpy not null terminate
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-4
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Wed, 12 Dec 2012 18:47:18 +0900
+
+libmm-imgp-gstcs (0.4-3) unstable; urgency=low
+
+  * [Tag] libmm-imgp-gstcs_0.4-3
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-3
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Mon, 10 Dec 2012 19:28:09 +0900
+
+libmm-imgp-gstcs (0.4-2) unstable; urgency=low
+
+  * [Prevent] code clean
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.4-2
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Thu, 06 Dec 2012 17:31:06 +0900
+
+libmm-imgp-gstcs (0.3-42) unstable; urgency=low
+
+  * Revise YUYV fourcc value
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.3-42
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Thu, 08 Nov 2012 20:34:34 +0900
+
+libmm-imgp-gstcs (0.3-41) unstable; urgency=low
+
+  * License file copied to /usr/share/license/
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.3-41
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Fri, 12 Oct 2012 16:03:29 +0900
+
+libmm-imgp-gstcs (0.3-40) unstable; urgency=low
+
+  * Add manifest file
+  * Git: framework/multimedia/libmm-imgp-gstcs
+  * Tag: libmm-imgp-gstcs_0.3-40
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Thu, 20 Sep 2012 21:17:16 +0900
+
 libmm-imgp-gstcs (0.1-18) unstable; urgency=low
 
   * Update format & colorspace string

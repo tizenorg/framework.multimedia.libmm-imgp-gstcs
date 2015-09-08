@@ -1,10 +1,10 @@
 #sbs-git:slp/pkgs/l/libmm-imgp-gstcs libmm-imgp-gstcs 0.1 62b62e6d483557fc5750d1b4986e9a98323f1194
 Name:       libmm-imgp-gstcs
 Summary:    Multimedia Framework Utility Library
-Version:    0.3
-Release:    39
+Version:    0.7
+Release:    14
 Group:      System/Libraries
-License:    Apache
+License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
 Requires(post):  /sbin/ldconfig
 Requires(postun):  /sbin/ldconfig
@@ -40,6 +40,8 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %make_install
+mkdir -p %{buildroot}/usr/share/license
+cp LICENSE %{buildroot}/usr/share/license/%{name}
 
 %clean
 rm -rf %{buildroot}
@@ -49,5 +51,7 @@ rm -rf %{buildroot}
 
 
 %files
+/usr/share/license/%{name}
+%manifest libmm-imgp-gstcs.manifest
 %defattr(-,root,root,-)
 %{_libdir}/*.so*

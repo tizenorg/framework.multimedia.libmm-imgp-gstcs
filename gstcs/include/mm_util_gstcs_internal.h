@@ -34,11 +34,11 @@ extern "C" {
 #include <gst/app/gstappsink.h>
 #include "mm_util_gstcs.h"
 #include "mm_log.h"
-
+#define GSTCS_FREE(src) { if(src) {g_free(src); src = NULL;} }
 typedef struct _image_format_s
 {
-	char format_label[IMAGE_FORMAT_LABEL_BUFFER_SIZE]; //I420, AYUV, RGB888, BGRA8888
-	char colorspace[IMAGE_FORMAT_LABEL_BUFFER_SIZE]; // yuv, rgb, RGBA
+	char *format_label; /*I420, AYUV, RGB888, BGRA8888 */
+	char *colorspace; /* yuv, rgb, RGBA */
 	int width;
 	int height;
 	int stride;
@@ -58,6 +58,18 @@ typedef struct _gstreamer_s
 	GstElement *appsink;
 	GstBuffer *output_buffer;
 } gstreamer_s;
+
+/**
+ *
+ * @remark     image size
+ *
+ * @param      input_format_label                                                                       [in]           "filename.yuv" or  "filename,rgb" etc
+ * @param      input_width, input_height, output_width, output_height   [in]            int value
+ * @return     This function returns image size
+*/
+static int
+mm_setup_image_size(const char* image_format_label, int width, int height);
+
 
 #ifdef __cplusplus
 }
