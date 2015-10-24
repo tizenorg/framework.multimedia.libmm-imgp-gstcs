@@ -92,6 +92,7 @@ typedef struct _imgp_info_s
 	unsigned int dst_height;
 	unsigned int output_stride;
 	unsigned int output_elevation;
+	unsigned int buffer_size;
 	mm_util_img_rotate_type_e angle;
 } imgp_info_s;
 
