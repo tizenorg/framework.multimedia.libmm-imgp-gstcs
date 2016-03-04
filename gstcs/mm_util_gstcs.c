@@ -564,12 +564,12 @@ _mm_push_buffer_into_pipeline_new(image_format_s *input_format, image_format_s *
 			data[y * stride_row + i] = pLine[i];
 		}
 		for(i = src_row; i < stride_row; i++) {
-			data[y * stride_row + i] = 0x00;
+			data[y * stride_row + i] = data[y * (src_row-1)];
 		}
 	}
 	for (y = (unsigned int)(input_format->height); y < (unsigned int)(input_format->elevation); y++) {
 		for(i = 0; i < stride_row; i++) {
-			data[y * stride_row + i] = 0x00;
+			data[y * stride_row + i] = data[(input_format->height-1) * stride_row + i];
 		}
 	}
 	gst_buf = gst_buffer_new_wrapped_full(GST_MEMORY_FLAG_READONLY, data, src_size, 0, src_size, data, _mm_destroy_notify);
